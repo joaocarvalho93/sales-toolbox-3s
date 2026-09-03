@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CalculadoraRouteImport } from './routes/calculadora'
 import { Route as DeepDiveRouteImport } from './routes/deep-dive'
+import { Route as PreVendasRouteImport } from './routes/pre-vendas'
 import { Route as PropostaRouteImport } from './routes/proposta'
 import { Route as ConhecimentoIndexRouteImport } from './routes/conhecimento.index'
 import { Route as ConhecimentoModuloIdRouteImport } from './routes/conhecimento.$moduloId'
@@ -29,6 +30,11 @@ const CalculadoraRoute = CalculadoraRouteImport.update({
 const DeepDiveRoute = DeepDiveRouteImport.update({
   id: '/deep-dive',
   path: '/deep-dive',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PreVendasRoute = PreVendasRouteImport.update({
+  id: '/pre-vendas',
+  path: '/pre-vendas',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PropostaRoute = PropostaRouteImport.update({
@@ -51,6 +57,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/calculadora': typeof CalculadoraRoute
   '/deep-dive': typeof DeepDiveRoute
+  '/pre-vendas': typeof PreVendasRoute
   '/proposta': typeof PropostaRoute
   '/conhecimento/$moduloId': typeof ConhecimentoModuloIdRoute
   '/conhecimento/': typeof ConhecimentoIndexRoute
@@ -59,6 +66,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/calculadora': typeof CalculadoraRoute
   '/deep-dive': typeof DeepDiveRoute
+  '/pre-vendas': typeof PreVendasRoute
   '/proposta': typeof PropostaRoute
   '/conhecimento/$moduloId': typeof ConhecimentoModuloIdRoute
   '/conhecimento': typeof ConhecimentoIndexRoute
@@ -68,6 +76,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/calculadora': typeof CalculadoraRoute
   '/deep-dive': typeof DeepDiveRoute
+  '/pre-vendas': typeof PreVendasRoute
   '/proposta': typeof PropostaRoute
   '/conhecimento/$moduloId': typeof ConhecimentoModuloIdRoute
   '/conhecimento/': typeof ConhecimentoIndexRoute
@@ -78,6 +87,7 @@ export interface FileRouteTypes {
     | '/'
     | '/calculadora'
     | '/deep-dive'
+    | '/pre-vendas'
     | '/proposta'
     | '/conhecimento/$moduloId'
     | '/conhecimento/'
@@ -86,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/calculadora'
     | '/deep-dive'
+    | '/pre-vendas'
     | '/proposta'
     | '/conhecimento/$moduloId'
     | '/conhecimento'
@@ -94,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/calculadora'
     | '/deep-dive'
+    | '/pre-vendas'
     | '/proposta'
     | '/conhecimento/$moduloId'
     | '/conhecimento/'
@@ -103,6 +115,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CalculadoraRoute: typeof CalculadoraRoute
   DeepDiveRoute: typeof DeepDiveRoute
+  PreVendasRoute: typeof PreVendasRoute
   PropostaRoute: typeof PropostaRoute
   ConhecimentoModuloIdRoute: typeof ConhecimentoModuloIdRoute
   ConhecimentoIndexRoute: typeof ConhecimentoIndexRoute
@@ -129,6 +142,13 @@ declare module '@tanstack/react-router' {
       path: '/deep-dive'
       fullPath: '/deep-dive'
       preLoaderRoute: typeof DeepDiveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pre-vendas': {
+      id: '/pre-vendas'
+      path: '/pre-vendas'
+      fullPath: '/pre-vendas'
+      preLoaderRoute: typeof PreVendasRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/proposta': {
@@ -159,6 +179,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CalculadoraRoute: CalculadoraRoute,
   DeepDiveRoute: DeepDiveRoute,
+  PreVendasRoute: PreVendasRoute,
   PropostaRoute: PropostaRoute,
   ConhecimentoModuloIdRoute: ConhecimentoModuloIdRoute,
   ConhecimentoIndexRoute: ConhecimentoIndexRoute,
