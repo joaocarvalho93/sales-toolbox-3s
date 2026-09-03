@@ -10,33 +10,141 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CalculadoraRouteImport } from './routes/calculadora'
+import { Route as ClientesRouteImport } from './routes/clientes'
+import { Route as DeepDiveRouteImport } from './routes/deep-dive'
+import { Route as GamificacaoRouteImport } from './routes/gamificacao'
+import { Route as PreVendasRouteImport } from './routes/pre-vendas'
+import { Route as PropostaRouteImport } from './routes/proposta'
+import { Route as ConhecimentoIndexRouteImport } from './routes/conhecimento.index'
+import { Route as ConhecimentoModuloIdRouteImport } from './routes/conhecimento.$moduloId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CalculadoraRoute = CalculadoraRouteImport.update({
+  id: '/calculadora',
+  path: '/calculadora',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClientesRoute = ClientesRouteImport.update({
+  id: '/clientes',
+  path: '/clientes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DeepDiveRoute = DeepDiveRouteImport.update({
+  id: '/deep-dive',
+  path: '/deep-dive',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GamificacaoRoute = GamificacaoRouteImport.update({
+  id: '/gamificacao',
+  path: '/gamificacao',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PreVendasRoute = PreVendasRouteImport.update({
+  id: '/pre-vendas',
+  path: '/pre-vendas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PropostaRoute = PropostaRouteImport.update({
+  id: '/proposta',
+  path: '/proposta',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConhecimentoIndexRoute = ConhecimentoIndexRouteImport.update({
+  id: '/conhecimento/',
+  path: '/conhecimento/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConhecimentoModuloIdRoute = ConhecimentoModuloIdRouteImport.update({
+  id: '/conhecimento/$moduloId',
+  path: '/conhecimento/$moduloId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/calculadora': typeof CalculadoraRoute
+  '/clientes': typeof ClientesRoute
+  '/deep-dive': typeof DeepDiveRoute
+  '/gamificacao': typeof GamificacaoRoute
+  '/pre-vendas': typeof PreVendasRoute
+  '/proposta': typeof PropostaRoute
+  '/conhecimento/$moduloId': typeof ConhecimentoModuloIdRoute
+  '/conhecimento/': typeof ConhecimentoIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/calculadora': typeof CalculadoraRoute
+  '/clientes': typeof ClientesRoute
+  '/deep-dive': typeof DeepDiveRoute
+  '/gamificacao': typeof GamificacaoRoute
+  '/pre-vendas': typeof PreVendasRoute
+  '/proposta': typeof PropostaRoute
+  '/conhecimento/$moduloId': typeof ConhecimentoModuloIdRoute
+  '/conhecimento': typeof ConhecimentoIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/calculadora': typeof CalculadoraRoute
+  '/clientes': typeof ClientesRoute
+  '/deep-dive': typeof DeepDiveRoute
+  '/gamificacao': typeof GamificacaoRoute
+  '/pre-vendas': typeof PreVendasRoute
+  '/proposta': typeof PropostaRoute
+  '/conhecimento/$moduloId': typeof ConhecimentoModuloIdRoute
+  '/conhecimento/': typeof ConhecimentoIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/calculadora'
+    | '/clientes'
+    | '/deep-dive'
+    | '/gamificacao'
+    | '/pre-vendas'
+    | '/proposta'
+    | '/conhecimento/$moduloId'
+    | '/conhecimento/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/calculadora'
+    | '/clientes'
+    | '/deep-dive'
+    | '/gamificacao'
+    | '/pre-vendas'
+    | '/proposta'
+    | '/conhecimento/$moduloId'
+    | '/conhecimento'
+  id:
+    | '__root__'
+    | '/'
+    | '/calculadora'
+    | '/clientes'
+    | '/deep-dive'
+    | '/gamificacao'
+    | '/pre-vendas'
+    | '/proposta'
+    | '/conhecimento/$moduloId'
+    | '/conhecimento/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CalculadoraRoute: typeof CalculadoraRoute
+  ClientesRoute: typeof ClientesRoute
+  DeepDiveRoute: typeof DeepDiveRoute
+  GamificacaoRoute: typeof GamificacaoRoute
+  PreVendasRoute: typeof PreVendasRoute
+  PropostaRoute: typeof PropostaRoute
+  ConhecimentoModuloIdRoute: typeof ConhecimentoModuloIdRoute
+  ConhecimentoIndexRoute: typeof ConhecimentoIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +156,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/calculadora': {
+      id: '/calculadora'
+      path: '/calculadora'
+      fullPath: '/calculadora'
+      preLoaderRoute: typeof CalculadoraRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/clientes': {
+      id: '/clientes'
+      path: '/clientes'
+      fullPath: '/clientes'
+      preLoaderRoute: typeof ClientesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/deep-dive': {
+      id: '/deep-dive'
+      path: '/deep-dive'
+      fullPath: '/deep-dive'
+      preLoaderRoute: typeof DeepDiveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gamificacao': {
+      id: '/gamificacao'
+      path: '/gamificacao'
+      fullPath: '/gamificacao'
+      preLoaderRoute: typeof GamificacaoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pre-vendas': {
+      id: '/pre-vendas'
+      path: '/pre-vendas'
+      fullPath: '/pre-vendas'
+      preLoaderRoute: typeof PreVendasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/proposta': {
+      id: '/proposta'
+      path: '/proposta'
+      fullPath: '/proposta'
+      preLoaderRoute: typeof PropostaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/conhecimento/': {
+      id: '/conhecimento/'
+      path: '/conhecimento'
+      fullPath: '/conhecimento/'
+      preLoaderRoute: typeof ConhecimentoIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/conhecimento/$moduloId': {
+      id: '/conhecimento/$moduloId'
+      path: '/conhecimento/$moduloId'
+      fullPath: '/conhecimento/$moduloId'
+      preLoaderRoute: typeof ConhecimentoModuloIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CalculadoraRoute: CalculadoraRoute,
+  ClientesRoute: ClientesRoute,
+  DeepDiveRoute: DeepDiveRoute,
+  GamificacaoRoute: GamificacaoRoute,
+  PreVendasRoute: PreVendasRoute,
+  PropostaRoute: PropostaRoute,
+  ConhecimentoModuloIdRoute: ConhecimentoModuloIdRoute,
+  ConhecimentoIndexRoute: ConhecimentoIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
