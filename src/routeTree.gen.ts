@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ConhecimentoIndexRouteImport } from './routes/conhecimento.index'
+import { Route as ConhecimentoModuloIdRouteImport } from './routes/conhecimento.$moduloId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,30 +23,39 @@ const ConhecimentoIndexRoute = ConhecimentoIndexRouteImport.update({
   path: '/conhecimento/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConhecimentoModuloIdRoute = ConhecimentoModuloIdRouteImport.update({
+  id: '/conhecimento/$moduloId',
+  path: '/conhecimento/$moduloId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/conhecimento/$moduloId': typeof ConhecimentoModuloIdRoute
   '/conhecimento/': typeof ConhecimentoIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/conhecimento/$moduloId': typeof ConhecimentoModuloIdRoute
   '/conhecimento': typeof ConhecimentoIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/conhecimento/$moduloId': typeof ConhecimentoModuloIdRoute
   '/conhecimento/': typeof ConhecimentoIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/conhecimento/'
+  fullPaths: '/' | '/conhecimento/$moduloId' | '/conhecimento/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/conhecimento'
-  id: '__root__' | '/' | '/conhecimento/'
+  to: '/' | '/conhecimento/$moduloId' | '/conhecimento'
+  id: '__root__' | '/' | '/conhecimento/$moduloId' | '/conhecimento/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ConhecimentoModuloIdRoute: typeof ConhecimentoModuloIdRoute
   ConhecimentoIndexRoute: typeof ConhecimentoIndexRoute
 }
 
@@ -65,11 +75,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ConhecimentoIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/conhecimento/$moduloId': {
+      id: '/conhecimento/$moduloId'
+      path: '/conhecimento/$moduloId'
+      fullPath: '/conhecimento/$moduloId'
+      preLoaderRoute: typeof ConhecimentoModuloIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ConhecimentoModuloIdRoute: ConhecimentoModuloIdRoute,
   ConhecimentoIndexRoute: ConhecimentoIndexRoute,
 }
 export const routeTree = rootRouteImport
